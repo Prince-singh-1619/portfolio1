@@ -100,10 +100,11 @@ header a:hover {
   }
 }
 
-/* home section and app p tags*/
+/* all p tags*/
 p {
   /* text-shadow: 1px 1px #111B00, 1.15px 1.15px yellow; */
-  text-shadow: 0.3px 0.3px red, 0.6px 0.6px blue, 0.9px 0.9px yellow;
+  /* text-shadow: 0.3px 0.3px red, 0.6px 0.6px blue, 0.9px 0.9px yellow; */
+  text-shadow: 0.2px 0.2px red, 0.4px 0.4px rgb(17, 255, 0);
 }
 
 /* about section */
@@ -200,35 +201,16 @@ p {
   /* font-size: 12px; */
 }
 
-/* .bounce-in {
-    opacity: 0;
-    transform: scale(0.5);
-    animation: bounceIn 1s ease forwards;
-}
-
-@keyframes bounceIn {
-    0% { transform: scale(0.5); opacity: 0; }
-    50% { transform: scale(1.1); opacity: 0.5; }
-    100% { transform: scale(1); opacity: 1; }
-} */
-
 .slide-left-head {
     display: inline-block;
     opacity: 0;
     transform: translateX(200%);
-    /* animation: slideLeftHead 1.5s forwards; */
     transition: transform 1.5s, opacity 1.5s;
 }
 .slide-left-head.visible {
   opacity: 1;
   transform: translateX(0);
 }
-/* @keyframes slideLeftHead {
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-} */
 /* Adding a slight delay to make words slide in sequence */
 .slide-left-head:nth-child(1) { transition-delay: 0.05s; }
 .slide-left-head:nth-child(2) { transition-delay: 0.1s; }
@@ -283,7 +265,6 @@ p {
 .slide-left-head:nth-child(51) { transition-delay: 2.55s; }
 .slide-left-head:nth-child(52) { transition-delay: 2.6s; }
 .slide-left-head:nth-child(53) { transition-delay: 2.65s; }
-/* Continue increasing the delay for each word */
 
 
 .slide-up {
@@ -304,18 +285,6 @@ p {
   opacity: 1;
   transform: translateY(0);
 }
-
-/* .slide-up{
-  transform: translateY(50%);
-  opacity: 0.5;
-  animation: slideUp 1.5s ease forwards;
-}
-@keyframes slideUp {
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-} */
 
 .slide-down {
   opacity: 0;
@@ -344,65 +313,20 @@ p {
   transform: translateX(20%); /* Start from the right */
   transition: opacity 1.5s ease-out, transform 1.5s ease-out;
 }
-
 .slide-left.visible {
   opacity: 1;
   transform: translateX(0); /* Slide to original position */
 }
-
-/* .slide-left{
-  transform: translateX(20%);
-  opacity: 0.5;
-  animation: slideLeft 1.5s ease forwards;
-}
-@keyframes slideLeft {
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-} */
 
 .slide-right {
   opacity: 0;
   transform: translateX(-20%); /* Start from the left */
   transition: opacity 1.5s ease-out, transform 1.5s ease-out;
 }
-
 .slide-right.visible {
   opacity: 1;
   transform: translateX(0); /* Slide to original position */
 }
-
-/* .slide-right{
-  transform: translateX(-20%);
-  opacity: 0.5;
-  animation: slideRight 1.5s ease forwards;
-}
-@keyframes slideRight {
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-} */
-
-/* .zoom-in{
-  transform: scale(0.5);
-  animation: zoomIn 1.5s ease forwards;
-}
-@keyframes zoomIn{
-  to{
-    transform: scale(1);
-  }
-}
-.zoom-out{
-  transform: scale(1.5);
-  animation: zoomOut 1.5s ease forwards;
-}
-@keyframes zoomOut{
-  to{
-    transform: scale(1);
-  }
-} */
 
 /* Zoom In */
 .zoom-in {
@@ -412,7 +336,6 @@ p {
 .zoom-in.visible {
   transform: scale(1);
 }
-
 /* Zoom Out */
 .zoom-out {
   transform: scale(1.5);
@@ -420,31 +343,4 @@ p {
 }
 .zoom-out.visible {
   transform: scale(1);
-}
-
-/* .head-word {
-  display: inline-block;
-  opacity: 0;
-  transform: translateX(0.5rem);
-  transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.6s ease-in-out;
-}
-
-.head-word {
-  transform: translateX(0);
-  opacity: 1;
-} */
-
-
-
-/* Counter */
-/* Styles for reset button */
-#reset {
-  margin-top: 20px;
-  background-color: #ff0000;
-  cursor: pointer;
-  font-size: 18px;
-  padding: 8px 20px;
-  color: white;
-  border: 0;
-  border-radius: 50px;
 }
