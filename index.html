@@ -32,12 +32,29 @@
         <a href="#projects-section" class="hover:text-neutral-400 duration-300">Projects</a>
         <a href="#contact-section" class="hover:text-neutral-400 duration-300">Contact</a>
       </div>
-      <div class="navigation flex gap-8 max-sm:hidden">
-        <a href="https://drive.google.com/file/d/1Gg0LevjMM8_9WJIUNS1Fcgf5olKd6C98/view?usp=sharing" target="_blank"><img src="./assets/curriculum-vitae.png" alt="Resume" class="h-[36px] w-[36px] invert transition-opacity duration-300 hover:opacity-50" title="My Resume"></a>
-        <a href="https://www.linkedin.com/in/prince-singh-ps171619" target="_blank"><img src="./assets/linkedIn-icon.png" alt="LinkedIn" class="h-[36px] w-[36px] transition-opacity duration-300 hover:opacity-50" title="linkedin"></a>
-        <a href="https://github.com/Prince-singh-1619" target="_blank"><img src="./assets/github_icon-modified.png" alt="GitHub" class="h-[36px] w-[36px] transition-opacity duration-300 hover:opacity-50" title="GitHub"></a>
-        <a href="https://www.naukri.com/code360/profile/prince_singh_17" target="_blank"><img src="./assets/icons8-coding.png" alt="Code" class="h-[36px] w-[36px] transition-opacity duration-300 hover:opacity-50" title="Code Profile"></a>
-        <a href="https://www.instagram.com/prince_singh_ps1619/?__pwa=1" target="_blank"><img src="./assets/instagram-icon.png" alt="Instagram" class="h-[36px] w-[36px] transition-opacity duration-300 hover:opacity-50" title="Instagram"></a>
+      <div class="navigation">
+        <div class="navi-icons flex items-center justify-center gap-8 max-sm:hidden">
+          <div class="icon resume">
+            <a href="https://drive.google.com/file/d/1Gg0LevjMM8_9WJIUNS1Fcgf5olKd6C98/view?usp=sharing" target="_blank"><img src="./assets/curriculum-vitae.png" alt="Resume" class="h-[36px] w-[36px] invert transition-opacity duration-300 hover:opacity-50" title=""></a>
+            <div class="tooltip">Resume</div>
+          </div>
+          <div class="icon linkedin">
+            <a href="https://www.linkedin.com/in/prince-singh-ps171619" target="_blank"><img src="./assets/linkedIn-icon.png" alt="LinkedIn" class="h-[36px] w-[36px] transition-opacity duration-300 hover:opacity-50" title=""></a>
+            <div class="tooltip">LinkedIn</div>
+          </div>
+          <div class="icon github">
+            <a href="https://github.com/Prince-singh-1619" target="_blank"><img src="./assets/github_icon-modified.png" alt="GitHub" class="h-[36px] w-[36px] transition-opacity duration-300 hover:opacity-50" title=""></a>
+            <div class="tooltip">Github</div>
+          </div>
+          <div class="icon codeninja">
+            <a href="https://www.naukri.com/code360/profile/prince_singh_17" target="_blank"><img src="./assets/icons8-coding.png" alt="Code" class="h-[36px] w-[36px] transition-opacity duration-300 hover:opacity-50" title=""></a>
+            <div class="tooltip">Coding Ninjas</div>
+          </div>
+          <div class="icon instagram">
+            <a href="https://www.instagram.com/prince_singh_ps1619/?__pwa=1" target="_blank"><img src="./assets/instagram-icon.png" alt="Instagram" class="h-[36px] w-[36px] transition-opacity duration-300 hover:opacity-50" title=""></a>
+            <div class="tooltip">Instagram</div>
+          </div>
+        </div> 
       </div>    
     </header>
 
@@ -291,7 +308,6 @@
     </section>
 
 <!-- skills -->
- <!-- add beautiful hover to display fullforms  -->
   <section class="h-fit py-10 w-full bg-violet-400 flex flex-col justify-around gap-16 max-lg:text-center">
     <div class="flex flex-col ">
       <small class="text-center">Explore</small>
@@ -305,8 +321,14 @@
         <p>
           <strong>Technical skills</strong>
             <ul class="skill-items ">
-              <li class="slide-left-head animate" title="Hyper Text Markup Language">HTML</li>
-              <li class="slide-left-head animate" title="Cascading Style Sheets">CSS</li>
+              <div class="skill-icon">
+                <span class="skill-tooltip html ml-20">Hyper Text Markup Language</span>
+                <li class="slide-left-head animate" title="">HTML</li>
+              </div>
+              <div class="skill-icon">
+                <span class="skill-tooltip">Cascading Style Sheets</span>
+                <li class="slide-left-head animate" title="">CSS</li>
+              </div>
               <li class="slide-left-head animate">Tailwind CSS</li>
               <li class="slide-left-head animate">JavaScript</li>
               <li class="slide-left-head animate">jQuery</li>
@@ -324,7 +346,10 @@
           <ul class="skill-items">
             <li class="slide-left-head animate">C++</li>
             <li class="slide-left-head animate">Java</li>
-            <li class="slide-left-head animate" title="Structured Query Language">SQL</li>
+            <div class="skill-icon">
+              <span class="skill-tooltip">Structured Query Language</span>
+              <li class="slide-left-head animate" title="">SQL</li>
+            </div>
           </ul>
         </p>
       <br/>
@@ -339,14 +364,38 @@
         <p>
           <strong>CourseWorks</strong>
           <ul class="skill-items">
-            <li class="slide-left-head animate" title="Data Structure and Algorithms">DSA</li>
-            <li class="slide-left-head animate" title="Artificial intelligence">AI</li>
-            <li class="slide-left-head animate" title="Machine Learning">ML</li>
-            <li class="slide-left-head animate" title="DataBase Management System">DBMS</li>
-            <li class="slide-left-head animate" title="Operating System">OS</li>
-            <li class="slide-left-head animate" title="Network and Communication">N/W & Comm.</li>
-            <li class="slide-left-head animate" title="Theory of Computation">TOC</li>
-            <li class="slide-left-head animate" title="Digital logic and design">DLD</li>
+            <div class="skill-icon">
+              <span class="skill-tooltip html ml-20">Data Structure and Algorithms</span>
+              <li class="slide-left-head animate" title="">DSA</li>
+            </div>
+            <div class="skill-icon">
+              <span class="skill-tooltip">Artificial intelligence</span>
+              <li class="slide-left-head animate" title="">AI</li>
+            </div>
+            <div class="skill-icon">
+              <span class="skill-tooltip">Machine Learning</span>
+              <li class="slide-left-head animate" title="">ML</li>
+            </div>
+            <div class="skill-icon">
+              <span class="skill-tooltip">DataBase Management System</span>
+              <li class="slide-left-head animate" title="">DBMS</li>
+            </div>
+            <div class="skill-icon">
+              <span class="skill-tooltip">Operating System</span>
+              <li class="slide-left-head animate" title="">OS</li>
+            </div>
+            <div class="skill-icon">
+              <span class="skill-tooltip">Network and Communication</span>
+              <li class="slide-left-head animate" title="">N/W & C</li>
+            </div>
+            <div class="skill-icon">
+              <span class="skill-tooltip">Theory of Computation</span>
+              <li class="slide-left-head animate" title="">TOC</li>
+            </div>
+            <div class="skill-icon">
+              <span class="skill-tooltip">Digital logic and design</span>
+              <li class="slide-left-head animate" title="">DLD</li>
+            </div>
           </ul>
         </p>
       </div>
@@ -479,15 +528,14 @@
       
       <div class="w-28 flex flex-col items-center justify-center">
         <!-- <Strong id="viewCounter" class="text-4xl">show view</Strong>        -->
-        <a href="https://www.freecounterstat.com" title="website counter"><img src="https://counter6.optistats.ovh/private/freecounterstat.php?c=7ufklzrmsmgqmft5ntkqz1yqq9uugzxy" border="0" title="website counter" alt="website counter"></a>
+        <!-- <a href="https://www.freecounterstat.com" title="website counter"><img src="https://counter6.optistats.ovh/private/freecounterstat.php?c=7ufklzrmsmgqmft5ntkqz1yqq9uugzxy" border="0" title="website counter" alt="website counter"></a> -->
         <span>Page Visits</span>
       </div>
     </div>
   </div>
 </footer>
 
-
-
+<!-- app.js file -->
 <script src="app.js"></script>
 </body>
 </html>

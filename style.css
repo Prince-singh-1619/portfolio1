@@ -52,6 +52,39 @@ header a:hover {
   transform: scale(1.05, 1.1);
 }
 
+.icon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.tooltip{
+  position:absolute;
+  margin-top: 90px;
+  display:none;
+  background-color: rgba(237, 242, 69, 1);
+  box-shadow: 0 5px 5px rgba(255, 255, 255, 0.2);
+  color:#0a001b;
+  font-size:16px;
+  border-radius:9999px;
+  padding: 2px 10px;
+  text-wrap:nowrap;
+}
+.tooltip:before{
+  position: absolute;
+  content: "";
+  height: 10px;
+  width: 10px;
+  background: rgba(237, 242, 69, 1);
+  top:-5px;
+  left:50%;
+  transform: translateX(-50%) rotate(45deg);
+}
+.icon:hover .tooltip{
+  display:flex;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); 
+}
+
 #welcome {
   stroke-width: 4;
   fill: white;
@@ -145,6 +178,50 @@ p {
   background-color: #defa8b;
   border-radius: 4px;
   color: #1f007b;
+}
+
+.skill-icon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.skill-tooltip{
+  position:absolute;
+  margin-bottom: 90px;
+  display:none;
+  background-color: #1f007b;
+  box-shadow: 0 5px 5px rgba(255, 255, 255, 0.2);
+  color:#defa8b;
+  font-size:16px;
+  border-radius:9999px;
+  padding: 2px 10px;
+  text-wrap:nowrap;
+}
+.skill-tooltip:before{
+  position: absolute;
+  content: "";
+  height: 10px;
+  width: 10px;
+  /* background: white; */
+  background: #1f007b;
+  bottom:-5px;
+  left:50%;
+  transform: translateX(-50%) rotate(45deg);
+}
+.skill-tooltip.html:before{
+  position: absolute;
+  content: "";
+  height: 10px;
+  width: 10px;
+  /* background: white; */
+  background: #1f007b;
+  bottom:-5px;
+  left:35%;
+  transform: translateX(-50%) rotate(45deg);
+}
+.skill-icon:hover .skill-tooltip{
+  display:flex;
+  transition: all 2s cubic-bezier(0.68, -0.55, 0.265, 1.55); 
 }
 
 .projects-card {
