@@ -92,3 +92,79 @@ document.addEventListener("DOMContentLoaded", function() {
     observer.observe(element);
   });
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+  let likeButton = document.querySelector('.like');
+  let empty = './assets/heart-outline.png'
+  let filled = './assets/heart-fill.png'
+  let isEmptyImg = true;
+
+  likeButton.addEventListener('click', () =>{
+    likeButton.classList.remove('clicked')
+    void likeButton.offsetWidth;
+    // likeButton.classList.add('clicked');
+
+    if(isEmptyImg){
+      likeButton.src = filled;
+      likeButton.classList.add('clicked')
+      // likeButton.classList.add('pops')
+      createScalingFadeEffect(likeButton);
+    }else{
+      likeButton.src = empty;
+      // likeButton.classList.remove('clicked');
+    }
+
+    // Call the function to create the scaling and fading effect
+    // createScalingFadeEffect(likeButton);
+
+    //toggle the boolean for next click
+    isEmptyImg = !isEmptyImg;
+  }) 
+})
+
+function createScalingFadeEffect(originalImage) {
+  // Get the bounding box of the original image (heart icon)
+  const imageRect = originalImage.getBoundingClientRect();
+
+  // Create a clone of the image (heart icon)
+  const clone = originalImage.cloneNode(true);
+  clone.classList.add('clone-heart');
+
+  // Set the initial position and size of the clone to match the original image
+  // clone.style.position = 'absolute';
+  clone.style.width = `${imageRect.width}px`;
+  clone.style.height = `${imageRect.height}px`;
+  clone.style.top = `${imageRect.top + window.scrollY}px`;
+  clone.style.left = `${imageRect.left + window.scrollX}px`;
+  // clone.style.transition = 'transform 0.6s ease, opacity 0.6s ease';
+  // clone.style.zIndex = 10;
+
+  // Append the clone to the body
+  document.body.appendChild(clone);
+
+  // Add the fade-out and scale-up animation
+  setTimeout(() => {
+    clone.style.transform = 'scale(2)';  // Scale up
+    clone.style.opacity = 0;  // Fade out
+  }, 10); // Slight delay to apply the animation after positioning
+
+  // Remove the clone after the animation completes
+  clone.addEventListener('transitionend', () => {
+    clone.remove();
+  });
+}
+
+
+// implementing like animation from YT
+document.addEventListener("DOMContentLoaded", function () {
+  const contentElements = document.querySelectorAll(".like-content");
+
+  contentElements.forEach((content) => {
+    content.addEventListener("click", function () {
+      const heartElements = document.querySelectorAll(".heart");
+      heartElements.forEach((heart) => {
+        heart.classList.toggle("heart-active");
+      });
+    });
+  });
+});
