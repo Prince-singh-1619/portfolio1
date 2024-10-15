@@ -1,16 +1,3 @@
-// function requiredField() {
-//     // Create a new style element
-//     const style = document.createElement('style');
-//     document.head.appendChild(style);
-
-//     // Add the placeholder styles dynamically
-//     style.sheet.insertRule(`
-//     ::placeholder {
-//         color: red;
-//         opacity: 0.75;
-//     }`);
-// }
-
 //contact section
 document.getElementById("contact-form").addEventListener("submit", function (event) {
     event.preventDefault();
@@ -38,42 +25,28 @@ document.getElementById("contact-form").addEventListener("submit", function (eve
       console.error("Error occurred while trying to open Gmail:", err);
       alert("Oops! Something went wrong.");
     }
-  });
-
-//captcha
-function onSubmit(token) {
-  document.getElementById("demo-form").submit();
-}
-let url =
-  "https://recaptchaenterprise.googleapis.com/v1/projects/my-portfolio-1-437705/assessments?key=6Lc_P1gqAAAAAHcDjR0cR98lTzc42YGAUVL9dG2H";
-fetch("./request.json") // Update with the actual file path
-  .then((response) => response.json()) // Convert file data to JSON
-  .then((jsonData) => {
-    fetch("https://your-api-url.com/endpoint", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(jsonData), // Send the JSON data
-    })
-      .then((response) => response.json())
-      .then((data) => console.log("Success:", data))
-      .catch((error) => console.error("Error:", error));
 });
 
-
-//view count function
-document.addEventListener("DOMContentLoaded", function () {
-  fetch("https://api.countapi.xyz/hit/prince-namespace/portfolio_1-viewCount")
-    .then((response) => response.json())
-    .then((data) => {
-      document.getElementById("viewCounter").innerText = data.value;
-      console.log("Count increased by 1");
-    })
-    .catch((error) => {
-      console.error("Error fetching view count", error);
-    });
-});
+// //captcha
+// function onSubmit(token) {
+//   document.getElementById("demo-form").submit();
+// }
+// let url =
+//   "https://recaptchaenterprise.googleapis.com/v1/projects/my-portfolio-1-437705/assessments?key=6Lc_P1gqAAAAAHcDjR0cR98lTzc42YGAUVL9dG2H";
+// fetch("./request.json") // Update with the actual file path
+//   .then((response) => response.json()) // Convert file data to JSON
+//   .then((jsonData) => {
+//     fetch("https://your-api-url.com/endpoint", {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify(jsonData), // Send the JSON data
+//     })
+//       .then((response) => response.json())
+//       .then((data) => console.log("Success:", data))
+//       .catch((error) => console.error("Error:", error));
+// });
 
 //animation only on view screen
 document.addEventListener("DOMContentLoaded", function() {
@@ -93,78 +66,101 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 
-document.addEventListener("DOMContentLoaded", function() {
+
+//implementing like and page count through Appwrite DB
+const client = new Appwrite.Client();
+
+client
+  .setEndpoint('https://cloud.appwrite.io/v1') // Your Appwrite Endpoint
+  .setProject('6704fa0e002d1c56b9da'); // Your project ID from Appwrite console
+
+const databases = new Appwrite.Databases(client);
+const databaseId = "likeCounter";
+const collectionId = "likeCount_tracker";  //2nd collection Id
+const documentId = "670bfb7c0018487ab942"; // The document that tracks likes
+
+//implementing like button effect
+document.addEventListener("DOMContentLoaded", async function() {
   let likeButton = document.querySelector('.like');
   let empty = './assets/heart-outline.png'
   let filled = './assets/heart-fill.png'
   let isEmptyImg = true;
+  let isLiked = localStorage.getItem('isLiked')==='true';
+
+  async function fetchDB(){
+    try {
+      const response = await databases.getDocument(databaseId, collectionId, documentId);
+      console.log("Response returned from DB: ", response)
+      return response.like_tracker
+    } catch (error) {
+      console.log("Error fetch data from DB in like function")
+    }
+  }
+  let likeCount = await fetchDB();
+  console.log("like count:", likeCount);
+  const likeNum = document.getElementById("likeNum")
+  likeNum.innerText = `${likeCount}`;
+
+  if(isLiked){
+    likeButton.src = filled;
+  }else{
+    likeButton.src = empty;
+  }
 
   likeButton.addEventListener('click', () =>{
-    likeButton.classList.remove('clicked')
-    void likeButton.offsetWidth;
-    // likeButton.classList.add('clicked');
-
-    if(isEmptyImg){
+    if(isLiked){
+      //Unlike action
+      likeButton.src = empty;
+      likeCount -= 1;
+      likeNum.innerText = `${likeCount}`;
+      localStorage.setItem('isLiked', 'false');
+      likeButton.classList.remove('clicked')
+      console.log("Like count decremented", likeCount)
+    }else{
+      //Like action
+      likeCount += 1;
+      likeNum.innerText = `${likeCount}`;
+      localStorage.setItem('isLiked', 'true');
       likeButton.src = filled;
       likeButton.classList.add('clicked')
-      // likeButton.classList.add('pops')
-      createScalingFadeEffect(likeButton);
-    }else{
-      likeButton.src = empty;
-      // likeButton.classList.remove('clicked');
+      console.log("Like count incremented", likeCount);
     }
-
-    // Call the function to create the scaling and fading effect
-    // createScalingFadeEffect(likeButton);
-
-    //toggle the boolean for next click
+    isLiked = !isLiked;
+    updateLikeCount(likeCount);
+    void likeButton.offsetWidth;
     isEmptyImg = !isEmptyImg;
   }) 
+
+  async function updateLikeCount(likeCount){
+    try {
+      await databases.updateDocument(databaseId, collectionId, documentId, {
+        like_tracker: likeCount
+      });
+      console.log("Updated like count in database: ", likeCount)
+    } catch (error) {
+      console.error("Error updating like count in database:", error)
+    }
+  }
 })
 
-function createScalingFadeEffect(originalImage) {
-  // Get the bounding box of the original image (heart icon)
-  const imageRect = originalImage.getBoundingClientRect();
+async function incrementPageVisit() {
+  try {
+    const response = await databases.getDocument(databaseId, collectionId, documentId);
+    console.log("Response returned from DB: ", response)
+    // Increment the reload count
+    const newCount = (response.visit_tracker || 0) + 1;
+    //display it on the page
+    const pageVisit = document.getElementById('pageVisit')
+    pageVisit.innerText = newCount;
 
-  // Create a clone of the image (heart icon)
-  const clone = originalImage.cloneNode(true);
-  clone.classList.add('clone-heart');
-
-  // Set the initial position and size of the clone to match the original image
-  // clone.style.position = 'absolute';
-  clone.style.width = `${imageRect.width}px`;
-  clone.style.height = `${imageRect.height}px`;
-  clone.style.top = `${imageRect.top + window.scrollY}px`;
-  clone.style.left = `${imageRect.left + window.scrollX}px`;
-  // clone.style.transition = 'transform 0.6s ease, opacity 0.6s ease';
-  // clone.style.zIndex = 10;
-
-  // Append the clone to the body
-  document.body.appendChild(clone);
-
-  // Add the fade-out and scale-up animation
-  setTimeout(() => {
-    clone.style.transform = 'scale(2)';  // Scale up
-    clone.style.opacity = 0;  // Fade out
-  }, 10); // Slight delay to apply the animation after positioning
-
-  // Remove the clone after the animation completes
-  clone.addEventListener('transitionend', () => {
-    clone.remove();
-  });
-}
-
-
-// implementing like animation from YT
-document.addEventListener("DOMContentLoaded", function () {
-  const contentElements = document.querySelectorAll(".like-content");
-
-  contentElements.forEach((content) => {
-    content.addEventListener("click", function () {
-      const heartElements = document.querySelectorAll(".heart");
-      heartElements.forEach((heart) => {
-        heart.classList.toggle("heart-active");
-      });
+    // Update the document with the new reloadCount
+    await databases.updateDocument(databaseId, collectionId, documentId, {
+      visit_tracker: newCount
     });
-  });
-});
+    console.log('Reload count updated to:', newCount);
+  } catch (error) {
+    console.error('Error updating reload count:', error);
+  }
+}
+// Calling the function on page load to increment the counter in body tag
+incrementPageVisit()

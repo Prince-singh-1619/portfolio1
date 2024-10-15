@@ -14,8 +14,6 @@
     <!-- <script src="https://www.google.com/recaptcha/enterprise.js?render=6Lc_P1gqAAAAAHcDjR0cR98lTzc42YGAUVL9dG2H"></script> -->
     <!-- // google reCaptcha -->
 
-    <!-- like count -->
-
 </head>
 <body class="m-0 p-0 box-border bg-[#0a001b] overflow-x-hidden">
     
@@ -320,7 +318,7 @@
       <div class="skill-heads">
         <p>
           <strong>Technical skills</strong>
-            <ul class="skill-items ">
+            <ul class="skill-items">
               <div class="skill-icon">
                 <span class="skill-tooltip html ml-20">Hyper Text Markup Language</span>
                 <li class="slide-left-head animate" title="">HTML</li>
@@ -495,7 +493,7 @@
         <textarea id="message-form" name="message" class="h-72 w-full p-4 bg-slate-200" placeholder="Enter your Message" required></textarea>
       </div>
 
-      <small>to add captcha</small>
+      <small class="text-[6px]">to add captcha</small>
       <!-- <div class="g-recaptcha" data-sitekey="6Lc_P1gqAAAAAHcDjR0cR98lTzc42YGAUVL9dG2H"></div>
       <input type="submit" value="Submit"> -->
       <button type="submit" value="Submit" class="btn send-btn w-48 tracking text-2xl bottom-0 right-0"> &#10522; Send &#8594;</button>
@@ -519,16 +517,16 @@
     <div class="h-20 w-[0.5px] bg-slate-500 py-1 max-sm:hidden"></div>
     <div class="hidden max-sm:block"><br/></div>
     <div class="flex gap-8 max-sm:justify-between">
-
-      <!-- <small>Like this page: </small>  -->
-      <div class="flex flex-col justify-center items-center">
-        <img id="like-empty" src="./assets/heart-outline.png" alt="like" class="like h-10 w-10 hover:cursor-pointer">  
-        <span>show count</span>
+      <div class="flex  justify-center items-center gap-2">
+        <img id="like-empty" src="./assets/heart-outline.png" alt="like" class="like h-14 w-14 hover:cursor-pointer">  
+        <div class="flex flex-col justify-center items-center">
+          <span id="likeNum" class="text-4xl">---</span>
+          <span>Likes</span>
+        </div>
       </div>       
       
       <div class="w-28 flex flex-col items-center justify-center">
-        <!-- <Strong id="viewCounter" class="text-4xl">show view</Strong>        -->
-        <a href="https://www.freecounterstat.com" title="website counter"><img src="https://counter6.optistats.ovh/private/freecounterstat.php?c=7ufklzrmsmgqmft5ntkqz1yqq9uugzxy" border="0" title="website counter" alt="website counter"></a>
+        <span id="pageVisit" class="text-4xl">----</span>
         <span>Page Visits</span>
       </div>
     </div>
@@ -536,6 +534,7 @@
 </footer>
 
 <!-- app.js file -->
+<script src="https://cdn.jsdelivr.net/npm/appwrite@14.0.1"></script>
 <script src="app.js"></script>
 </body>
 </html>

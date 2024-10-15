@@ -135,8 +135,6 @@ header a:hover {
 
 /* all p tags*/
 p {
-  /* text-shadow: 1px 1px #111B00, 1.15px 1.15px yellow; */
-  /* text-shadow: 0.3px 0.3px red, 0.6px 0.6px blue, 0.9px 0.9px yellow; */
   text-shadow: 0.2px 0.2px red, 0.4px 0.4px rgb(17, 255, 0);
 }
 
@@ -278,31 +276,6 @@ p {
   /* font-size: 12px; */
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .like{
   transition: transform 0.3s ease-in-out;
   cursor: pointer;
@@ -324,91 +297,6 @@ p {
     transform: scale(1);
   }
 }
-/* heart cloned from js */
-.clone-heart{
-  position: absolute;
-  z-index: 10;
-  transition: transform 0.6s ease, opacity 0.6s ease;
-  transform: scale(1);
-  opacity: 1;
-}
-/* .like.clicked.pops{
-  position:absolute;
-  animation: scaleUpLike 1.5s forwards;
-}
-@keyframes scaleUpLike{
-  0%{
-    transform:scale(1);
-  }
-  100%{
-    transform: scale(5);
-    opacity: 0;
-  }
-} */
-
-.like-clone {
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 1;
-  transition: transform 0.6s ease, opacity 0.6s ease;
-  z-index: 10;
-}
-/* Scaling and fading effect */
-.image-clone.fade-out {
-  transform: scale(2);
-  opacity: 0;
-}
-
-
-
-/* //heart from YT
-.heart{
-  position: absolute;
-  background: url("img.png") no-repeat;
-  background-position: left;
-  background-size: 2900%;
-  height: 90px;
-  width: 90px;
-  top: 50%;
-  left: 21%;
-  transform: translate(-50%,-50%);
-}
-.heart.heart-active{
-  animation: AnimateHeart 1.5s steps(28) 1;
-  background-position: right;
-}
-@keyframes AnimateHeart {
-  0%{
-    background-position: left;
-  }
-  100%{
-    background-position: right;
-  }
-} */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .slide-left-head {
     display: inline-block;
